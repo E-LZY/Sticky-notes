@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Architects Daughter', Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #ecb885;
+}
+
+.btn-create-note {
+    background-color: #41a711;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10%;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.header-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 0.5rem;
+}
+
+.header-container h1 {
+    font-size: 2.25rem;
+}
+
+.main-container {
+    width: 95%;
+    margin: auto;
+}
+.notes-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 5%;
+}
+.note {
+    width: 225px;
+    height: 225px;
+    font-size: 14px;
+    padding: 15px;
+    margin-top: 10px;
+    overflow: hidden;
+    box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.25);
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+.new-note-container{
+    display: none;
+    position: absolute;
+    top: 26%;
+    left: 40%;
+}
+.new-note-container textarea{
+    box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
+    outline: none;
+    border: none;
+    width: 250px;
+    height: 250px;
+    padding: 40px 25px 25px 25px;
+    resize: none;
+    font-size: 16px;
+}
+
+svg {
+    color: gray;
+    cursor: pointer;
+}
+#check-icon {
+    position: absolute;
+    right: 5%;
+    top: 4%;
+}
+#x-icon {
+    position: absolute;
+    right: 14%;
+    top: 4%;
+}
