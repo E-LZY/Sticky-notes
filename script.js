@@ -3,41 +3,43 @@ var newNoteContainer = document.getElementsByClassName("new-note-container")[0];
 var checkIcon = document.getElementById("check-icon");
 var xIcon = document.getElementById("x-icon");
 
-var i=0;
+var i = 0;
 
-xIcon.addEventListener("click",()=>{
-    typeNote();
-})
+xIcon.addEventListener("click", () => {
+  typeNote();
+});
 
-checkIcon.addEventListener("click",()=>{
-    createNote();
-})
-
-function typeNote(){
-    if(newNoteContainer.style.display=="none")
+checkIcon.addEventListener("click", () => {
+    var noteText = document.getElementById("note-text").value;
+    if(noteText!="")
     {
-        newNoteContainer.style.display="block";
+        createNote(noteText);
     }
-    else{
-        newNoteContainer.style.display="none";
-    }
+    document.getElementById("note-text").value = "";
+    typeNote();
+});
+
+function typeNote() {
+  if (newNoteContainer.style.display == "none") {
+    newNoteContainer.style.display = "block";
+  } else {
+    newNoteContainer.style.display = "none";
+  }
 }
 
-function createNote(){
-    var noteText = document.getElementById("note-text").value;
+function createNote(msg) {
+//   var noteText = document.getElementById("note-text").value;
 
-    var node0 = document.createElement("div");
-    var node1 = document.createElement("p");
-    node1.classList.add("note");
-    node1.style.margin=margin();
-    node1.style.transform=rotate();
-    node1.style.background=color();
-    node1.innerHTML = noteText;
-    node0.appendChild(node1);
+  var node0 = document.createElement("div");
+  var node1 = document.createElement("p");
+  node1.classList.add("note");
+  node1.style.margin = margin();
+  node1.style.transform = rotate();
+  node1.style.background = color();
+  node1.innerHTML = msg;
+  node0.appendChild(node1);
 
-    notesContainer.insertAdjacentElement("beforeend", node0);
-    document.getElementById("note-text").value="";
-    typeNote();
+  notesContainer.insertAdjacentElement("beforeend", node0);
 }
 
 function margin() {
@@ -46,22 +48,32 @@ function margin() {
   return randomMargin[Math.floor(Math.random() * randomMargin.length)];
 }
 
-function rotate(){
-    var randomRotate = ["rotate(3deg)","rotate(1deg)","rotate(-1deg)","rotate(-3deg)","rotate(-5deg)","rotate(-10deg)"];
+function rotate() {
+  var randomRotate = [
+    "rotate(3deg)",
+    "rotate(1deg)",
+    "rotate(-1deg)",
+    "rotate(-3deg)",
+    "rotate(-5deg)",
+    "rotate(-10deg)",
+  ];
 
-    return randomRotate[Math.floor(Math.random() * randomRotate.length)];
+  return randomRotate[Math.floor(Math.random() * randomRotate.length)];
 }
 
-function color(){
-    var randomColor = ["#c2ff3d","#ff3de8","#3dc2ff","#04e022","bc83e6","#ebb328"];
+function color() {
+  var randomColor = [
+    "#c2ff3d",
+    "#ff3de8",
+    "#3dc2ff",
+    "#04e022",
+    "bc83e6",
+    "#ebb328",
+  ];
 
-    if(i>randomColor-1) i=0;
-    return randomColor[i++];
+  if (i > randomColor - 1) i = 0;
+  return randomColor[i++];
 }
-
-
-
-
 
 // echo "# Sticky-notes" >> README.md
 // git init
