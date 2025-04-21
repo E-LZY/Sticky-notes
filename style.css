@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Pridi:wght@200;300;400;500;600;700&family=Swanky+and+Moo+Moo&family=Young+Serif&display=swap');
+
+
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Architects Daughter', Arial, Helvetica, sans-serif;
+    font-family: 'Swanky and Moo Moo', Arial, Helvetica, sans-serif;
 }
 
 body {
-    background: #ecb885;
+    background: #b02a2a;
 }
 
 .btn-create-note {
@@ -16,7 +19,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 10%;
     color: white;
-    font-size: 1.25rem;
+    font-size: 26px;
     cursor: pointer;
 }
 
@@ -24,15 +27,15 @@ body {
     max-width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: antiquewhite;
+    background-color: rgb(254, 219, 173);
     position: sticky;
     top: 0;
     z-index: 10;
-    padding: 0.5rem;
+    padding: 10px 10px 10px 20px;
 }
 
 .header-container h1 {
-    font-size: 2.25rem;
+    font-size: 40px;
 }
 
 .main-container {
@@ -49,29 +52,32 @@ body {
 .note {
     width: 225px;
     height: 225px;
-    font-size: 14px;
+    font-size: 16px;
     padding: 15px;
     margin-top: 10px;
     overflow: hidden;
     box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.25);
     text-wrap: wrap;
     word-wrap: break-word;
+    font-family: "Pridi";
 }
 .new-note-container{
     display: none;
     position: absolute;
     top: 26%;
-    left: 40%;
+    left: 20%;
 }
-.new-note-container textarea{
+.new-note-container #note-text{
     box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
     outline: none;
     border: none;
     width: 250px;
     height: 250px;
-    padding: 40px 25px 25px 25px;
+    background-color: white;
+    padding: 70px 20px 20px 20px;
     resize: none;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: "Pridi";
 }
 
 svg {
@@ -81,10 +87,65 @@ svg {
 #check-icon {
     position: absolute;
     right: 5%;
-    top: 4%;
+    bottom: 5%;
+    color: #41a711;
 }
 #x-icon {
     position: absolute;
     right: 14%;
-    top: 4%;
+    bottom: 5%;
+    color: #f54747;
 }
+#trash-icon {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    color: #f54747;
+}
+
+.new-note-editor {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 4%;
+    left: 5%;
+}
+.new-note-editor div{
+    background-color: #eee;
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    font-size: 20px;
+    align-content: center;
+    border-radius: 10%;
+    cursor: pointer;
+}
+.new-note-editor div:not(:first-child){
+    width: 30px;
+    height: 30px;
+}
+.color {
+    padding-top: 4px;
+}
+.bold {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+.lineThrough {
+    text-decoration: line-through;
+}
+
+hr {
+    position: absolute;
+    top: 16%;
+    left: 2%;
+    width: 96%;
+    border: #000000 1px solid;
+}
+

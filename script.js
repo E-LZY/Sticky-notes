@@ -2,22 +2,33 @@ var notesContainer = document.getElementsByClassName("notes-container")[0];
 var newNoteContainer = document.getElementsByClassName("new-note-container")[0];
 var checkIcon = document.getElementById("check-icon");
 var xIcon = document.getElementById("x-icon");
+var trashIcon = document.getElementById("trash-icon");
+var colorPicker = document.getElementById("colorPicker");
 
 var i = 0;
+var currentColor = "#ffffff";
 
 xIcon.addEventListener("click", () => {
   typeNote();
+  document.getElementById("note-text").innerHTML = "";
 });
 
 checkIcon.addEventListener("click", () => {
-    var noteText = document.getElementById("note-text").value;
-    if(noteText!="")
-    {
-        createNote(noteText);
-    }
-    document.getElementById("note-text").value = "";
-    typeNote();
+  var noteText = document.getElementById("note-text").innerHTML;
+  console.log(noteText);
+
+  if (noteText != "") {
+    createNote(noteText);
+  }
+  document.getElementById("note-text").innerHTML = "";
+  typeNote();
 });
+
+// trashIcon.addEventListener("mouseover", () => {
+//   // typeNote();
+//   // document.getElementById("note-text").innerHTML = "";
+//   getSelectedText();
+// });
 
 function typeNote() {
   if (newNoteContainer.style.display == "none") {
@@ -28,18 +39,22 @@ function typeNote() {
 }
 
 function createNote(msg) {
-//   var noteText = document.getElementById("note-text").value;
+  // var noteTextDiv = document.getElementById("note-text");
 
   var node0 = document.createElement("div");
   var node1 = document.createElement("p");
   node1.classList.add("note");
   node1.style.margin = margin();
   node1.style.transform = rotate();
-  node1.style.background = color();
+  node1.style.background = currentColor;
   node1.innerHTML = msg;
   node0.appendChild(node1);
+  node0.addEventListener("click", () => {
+    openNoted();
+  });
 
   notesContainer.insertAdjacentElement("beforeend", node0);
+  ResetColor();
 }
 
 function margin() {
@@ -55,30 +70,64 @@ function rotate() {
     "rotate(-1deg)",
     "rotate(-3deg)",
     "rotate(-5deg)",
-    "rotate(-10deg)",
+    "rotate(0deg)",
   ];
 
   return randomRotate[Math.floor(Math.random() * randomRotate.length)];
 }
 
-function color() {
-  var randomColor = [
-    "#c2ff3d",
-    "#ff3de8",
-    "#3dc2ff",
-    "#04e022",
-    "bc83e6",
-    "#ebb328",
-  ];
+// function color() {
+//   var randomColor = [
+//     "#c1ffe3",
+//     "#ffade8",
+//     "#3dc9ff",
+//     "#dfef12",
+//     "#bca3e6",
+//     "#ebd328",
+//   ];
 
-  if (i > randomColor - 1) i = 0;
-  return randomColor[i++];
+//   if (i > randomColor.length - 1) i = 0;
+//   return randomColor[i++];
+// }
+
+let selectedText = "";
+let rangeAt = "";
+
+document.addEventListener("selectionchange", () => {
+  if (window.getSelection().toString() != "") {
+    selectedText = window.getSelection().toString();
+    rangeAt = window.getSelection().getRangeAt(0);
+    console.log("Selected text:", selectedText);
+  }
+});
+
+function getSelectedStyle(e) {
+  if (selectedText) {
+    console.log(selectedText);
+
+    let s = document.createElement("span");
+    s.classList.add(e);
+    s.innerHTML = selectedText;
+    rangeAt.deleteContents();
+    rangeAt.insertNode(s);
+  }
 }
 
-// echo "# Sticky-notes" >> README.md
-// git init
-// git add README.md
-// git commit -m "first commit"
-// git branch -M main
-// git remote add origin https://github.com/E-LZY/Sticky-notes.git
-// git push -u origin main
+function ChangeColor() {
+  console.log("clicked");
+  colorPicker.click();
+
+  colorPicker.addEventListener("input", () => {
+    const newNoteBox = document.getElementById("note-text");
+    currentColor = colorPicker.value;
+    newNoteBox.style.backgroundColor = currentColor;
+  });
+}
+
+function ResetColor() {
+  colorPicker.value = "#ffffff";
+  const newNoteBox = document.getElementById("note-text");
+  currentColor = colorPicker.value;
+  newNoteBox.style.backgroundColor = currentColor;
+}
+
