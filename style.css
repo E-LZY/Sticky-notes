@@ -3,10 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Pridi:wght@200;300;400;500;600;700&family=Swanky+and+Moo+Moo&family=Young+Serif&display=swap');
 
 
-*{
+* {
     padding: 0;
     margin: 0;
-    font-family: 'Pridi', Arial, Helvetica, sans-serif;
+    font-family: 'Swanky and Moo Moo', Arial, Helvetica, sans-serif;
+}
+
+p, span {
+    font-family: 'Pridi';
 }
 
 body {
@@ -42,13 +46,15 @@ body {
     width: 95%;
     margin: auto;
 }
-.notes-container{
+
+.notes-container {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 20px;
     margin-left: 5%;
 }
+
 .note {
     width: 225px;
     height: 225px;
@@ -61,13 +67,15 @@ body {
     word-wrap: break-word;
     font-family: "Pridi";
 }
-.new-note-container{
+
+.new-note-container {
     display: none;
     position: absolute;
     top: 26%;
     left: 20%;
 }
-.new-note-container #note-text{
+
+.new-note-container #note-text {
     box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.25);
     outline: none;
     border: none;
@@ -84,18 +92,21 @@ svg {
     color: gray;
     cursor: pointer;
 }
+
 #check-icon {
     position: absolute;
     right: 5%;
     bottom: 5%;
     color: #41a711;
 }
+
 #x-icon {
     position: absolute;
     right: 14%;
     bottom: 5%;
     color: #f54747;
 }
+
 #trash-icon {
     position: absolute;
     left: 5%;
@@ -111,7 +122,8 @@ svg {
     top: 4%;
     left: 5%;
 }
-.new-note-editor div{
+
+.new-note-editor div {
     background-color: #eee;
     width: 30px;
     height: 25px;
@@ -121,22 +133,28 @@ svg {
     border-radius: 10%;
     cursor: pointer;
 }
-.new-note-editor div:not(:first-child){
+
+.new-note-editor div:not(:first-child) {
     width: 30px;
     height: 30px;
 }
+
 .color {
     padding-top: 4px;
 }
+
 .bold {
     font-weight: bold;
 }
+
 .italic {
     font-style: italic;
 }
+
 .underline {
     text-decoration: underline;
 }
+
 .lineThrough {
     text-decoration: line-through;
 }
@@ -148,4 +166,3 @@ hr {
     width: 96%;
     border: #000000 1px solid;
 }
-
